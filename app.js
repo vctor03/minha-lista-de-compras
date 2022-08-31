@@ -1,21 +1,61 @@
-function create_input_button_and_area(div_id){
+function create_input_button_and_area(div_inputs_id, div_itens_id){
     // Div
-    const div_to_inputs = document.querySelector(`#${div_id}`); // as HTMLDivElement
+    const div_to_inputs = document.querySelector(`#${div_inputs_id}`); // as HTMLDivElement
     const div = document.createElement('DIV')
+
     // Text input
     const text_input = document.createElement('INPUT');
     text_input.setAttribute('type', 'text');
+    text_input.setAttribute('id', `text-input-${div_inputs_id}`)
+
     // Button
-    const button_input = document.createElement('INPUT');
-    button_input.setAttribute('type', 'button');
-    button_input.setAttribute('value', 'Adicionar item');
+    const button_input = document.createElement('BUTTON');
+    button_input.innerHTML = 'Adicionar item';
+
+    // Button event
+    button_input.setAttribute(
+        'onclick', `button_click('${div_itens_id}', 'text-input-${div_inputs_id}')`
+    );
+
     // Add inputs to div
     div.appendChild(text_input);
     div.appendChild(button_input);
     div_to_inputs.appendChild(div);
 };
 
+function button_click(div_itens_id, text_input_id){
+    const text_input = document.querySelector(`#${text_input_id}`);
+    const text_input_value = text_input.value;
+    if (text_input_value != '') {
+        add_item_to_list(div_itens_id, text_input_value);
+        text_input.value = '';
+    };
+}
+
+function add_item_to_list(div_list_id, item){
+    // Label
+    const label = document.createElement('LABEL');
+    label.setAttribute('class', 'lista');
+    label.setAttribute('for', item);
+    label.innerHTML = item;
+
+    // Checkbox
+    const checkbox = document.createElement('INPUT');
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.setAttribute('name', 'lista-1')
+    checkbox.setAttribute('id', item)
+
+    // Br
+    const br = document.createElement('BR');
+
+    // Div
+    const div = document.querySelector(`#${div_list_id}`);
+    div.appendChild(label);
+    div.appendChild(checkbox);
+    div.appendChild(br);
+}
+
 function main(){
-    create_input_button_and_area('div-lista-compras-input')
-    create_input_button_and_area('div-lista-produtos-limpeza-input');
+    create_input_button_and_area('div-lista-compras-input', 'lista-de-compras')
+    create_input_button_and_area('div-lista-produtos-limpeza-input', 'lista-produtos-limpeza');
 };
