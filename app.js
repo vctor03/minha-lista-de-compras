@@ -59,3 +59,5 @@ function main(){
     create_input_button_and_area('div-lista-compras-input', 'lista-de-compras')
     create_input_button_and_area('div-lista-produtos-limpeza-input', 'lista-produtos-limpeza');
 };
+
+window.addEventListener('DOMContentLoaded', main, false)
