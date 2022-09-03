@@ -40,6 +40,13 @@ function button_click(div_itens_id, text_input_id){
     }
 }
 
+function delete_button_click(item){
+    const div = document.querySelector(`#div-${item}`)
+    div.remove()
+    const item_pos = list_itens.indexOf(item)
+    list_itens.splice(item_pos, 1)
+}
+
 function add_item_to_list(div_list_id, item){
     if (!(list_itens.indexOf(item) === -1)){ // Verify if item exists
         window.alert('Item já foi adicionado!')
@@ -60,11 +67,15 @@ function add_item_to_list(div_list_id, item){
     // Br
     const br = document.createElement('BR')
 
+    // Delete button
+    const delete_button = create_delete_item_button(item)
+
     // Div
     const div = document.createElement('DIV')
     div.setAttribute('id', `div-${item}`)
     div.appendChild(label)
     div.appendChild(checkbox)
+    div.appendChild(delete_button)
     div.appendChild(br)
 
     // Div list
@@ -72,6 +83,15 @@ function add_item_to_list(div_list_id, item){
     div_list.appendChild(div)
     list_itens.push(item)
     return true
+}
+
+function create_delete_item_button(div_item_id){
+    const button = document.createElement('BUTTON')
+    button.innerHTML = 'Remover item'
+    button.setAttribute(
+        'onclick', `delete_button_click('${div_item_id}')`
+    )
+    return button
 }
 
 function main(){
