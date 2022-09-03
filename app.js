@@ -1,3 +1,5 @@
+const list_itens = [] // Itens list to avoid duplicate itens
+
 function create_input_button_and_area(div_inputs_id, div_itens_id){
     // Div
     const div_to_inputs = document.querySelector(`#${div_inputs_id}`) // as HTMLDivElement
@@ -39,6 +41,10 @@ function button_click(div_itens_id, text_input_id){
 }
 
 function add_item_to_list(div_list_id, item){
+    if (!(list_itens.indexOf(item) === -1)){ // Verify if item exists
+        window.alert('Item já foi adicionado!')
+        return false
+    }
     // Label
     const label = document.createElement('LABEL')
     label.setAttribute('class', 'lista')
@@ -55,10 +61,17 @@ function add_item_to_list(div_list_id, item){
     const br = document.createElement('BR')
 
     // Div
-    const div = document.querySelector(`#${div_list_id}`)
+    const div = document.createElement('DIV')
+    div.setAttribute('id', `div-${item}`)
     div.appendChild(label)
     div.appendChild(checkbox)
     div.appendChild(br)
+
+    // Div list
+    const div_list = document.querySelector(`#${div_list_id}`)
+    div_list.appendChild(div)
+    list_itens.push(item)
+    return true
 }
 
 function main(){
