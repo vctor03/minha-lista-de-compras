@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "tsc",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3",
+    "webpack": "^5.74.0"
+  }
+}
