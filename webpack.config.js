@@ -7,6 +7,6 @@ module.exports = {
     entry: `./${app_name}/ts_compile_js/list.js`,
     output: {
         filename: 'list_index.js',
-        path: resolve(path_to_static, 'js')
+        path: path_to_static
     }
 };

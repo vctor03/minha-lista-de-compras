@@ -1,6 +1,8 @@
-const list_itens = [] // Itens list to avoid duplicate itens
+const list_itens: string[] = [] // Itens list to avoid duplicate itens
+const text_input_generic_name: string = 'text-input'
+const btn_input_generic_name_generic_name: string = 'btn-input'
 
-function create_input_button_and_area(div_inputs_id, div_itens_id){
+function create_input_button_and_area(div_inputs_id: string, div_itens_id: string){
     // Div
     const div_to_inputs = document.querySelector(`#${div_inputs_id}`) // as HTMLDivElement
     const div = document.createElement('DIV')
@@ -9,19 +11,21 @@ function create_input_button_and_area(div_inputs_id, div_itens_id){
     // Text input
     const text_input = document.createElement('INPUT')
     text_input.setAttribute('type', 'text')
-    text_input.setAttribute('id', `text-input-${div_inputs_id}`)
+    text_input.setAttribute('id', `${text_input_generic_name}-${div_inputs_id}`)
 
     // Button
     const button_input = document.createElement('BUTTON')
     button_input.innerHTML = 'Adicionar item'
-    button_input.setAttribute('id', `btn-input-${div_inputs_id}`)
+    button_input.setAttribute('id', `${btn_input_generic_name_generic_name}-${div_inputs_id}`)
 
     // Text Input Label
-    text_input_label.setAttribute('for', `btn-input-${div_inputs_id}`)
+    text_input_label.setAttribute('for', `${btn_input_generic_name_generic_name}-${div_inputs_id}`)
 
     // Button event
-    button_input.setAttribute(
-        'onclick', `button_click('${div_itens_id}', 'text-input-${div_inputs_id}')`
+    button_input.addEventListener(
+        "click", () => { 
+            button_click(div_itens_id, `${text_input_generic_name}-${div_inputs_id}`)
+        }
     )
 
     // Add inputs to div
@@ -31,8 +35,8 @@ function create_input_button_and_area(div_inputs_id, div_itens_id){
     div_to_inputs.appendChild(div)
 }
 
-function button_click(div_itens_id, text_input_id){
-    const text_input = document.querySelector(`#${text_input_id}`)
+function button_click(div_itens_id: string, text_input_id: string){
+    const text_input = document.querySelector(`#${text_input_id}`) as HTMLInputElement
     const text_input_value = text_input.value
     if (text_input_value != '') {
         add_item_to_list(div_itens_id, text_input_value)
@@ -40,14 +44,14 @@ function button_click(div_itens_id, text_input_id){
     }
 }
 
-function delete_button_click(item){
+function delete_button_click(item: string){
     const div = document.querySelector(`#div-${item}`)
     div.remove()
     const item_pos = list_itens.indexOf(item)
     list_itens.splice(item_pos, 1)
 }
 
-function add_item_to_list(div_list_id, item){
+function add_item_to_list(div_list_id: string, item: string){
     if (!(list_itens.indexOf(item) === -1)){ // Verify if item exists
         window.alert('Item já foi adicionado!')
         return false
@@ -85,11 +89,13 @@ function add_item_to_list(div_list_id, item){
     return true
 }
 
-function create_delete_item_button(div_item_id){
+function create_delete_item_button(div_item_id: string){
     const button = document.createElement('BUTTON')
     button.innerHTML = 'Remover item'
-    button.setAttribute(
-        'onclick', `delete_button_click('${div_item_id}')`
+    button.addEventListener(
+        'click', () => {
+            delete_button_click(div_item_id)
+        }
     )
     return button
 }
