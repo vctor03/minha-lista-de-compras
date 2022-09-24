@@ -1,4 +1,4 @@
-
+import '../css/list.css'
 
 class ListClass {
 
