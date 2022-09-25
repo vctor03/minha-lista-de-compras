@@ -9,3 +9,7 @@ def index():
 @user.route('/list')
 def list_route():
     return render_template('list/index.html')
+
+@user.route('/login')
+def login_route():
+    return render_template('login/index.html')
