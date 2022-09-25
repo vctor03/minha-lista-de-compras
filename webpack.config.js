@@ -7,6 +7,7 @@ const path_to_ts_compile_js = resolve(__dirname, app_name, 'ts_compile_js')
 module.exports = {
     entry: {
         list: resolve(path_to_ts_compile_js, 'list.js'),
+        login: resolve(path_to_ts_compile_js, 'login.js')
     },
     output: {
         filename: '[name]_index.js',
