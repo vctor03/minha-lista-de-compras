@@ -21,6 +21,8 @@ O script **start** executa a compilação do typescript para javascript por meio
 
 O script **build** executa o empacotamento dos arquivos.
 
+**Dica:** Caso queira apenas compilar o css você pode rodar apenas o comando **build**, ou se estiver utilizando o **tsc --watch** para o typescript.
+
 **Dica:** Caso queira poupar tempo, instale o **npm-run-all** de forma global
 
     npm install npm-run-all -g
