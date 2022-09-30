@@ -4,7 +4,7 @@ user = Blueprint('user', __name__, template_folder='templates')
 
 @user.route('/')
 def index():
-    return 'User Route'
+    return render_template('user/index.html')
 
 @user.route('/list')
 def list_route():
