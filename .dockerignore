@@ -10,6 +10,7 @@ __pycache__/
 static/
 node_modules/
 ts_compile_js/
-Backlog.md
-mlc
 *.db
+Backlog.md
+.pytest_cache/
+mlc
