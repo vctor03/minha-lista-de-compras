@@ -4,7 +4,13 @@ path_to_bin='/usr/local/bin'
 pip="${path_to_bin}/pip"
 npm="${path_to_bin}/npm"
 
+# Python
+
 $pip install -r requirements.txt
+
+## Pytest
+
+ln -s minha-lista-de-compras mlc
 
 # Node
 
