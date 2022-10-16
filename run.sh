@@ -14,4 +14,4 @@ $npm run build
 
 cd minha-lista-de-compras
 
-flask run --host 0.0.0.0 --port 8080
+FLASK_DEBUG=true flask run --host 0.0.0.0 --port 8080
