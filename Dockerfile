@@ -2,12 +2,28 @@ FROM nikolaik/python-nodejs:python3.10-nodejs18-alpine
 
 RUN apk add --no-cache --upgrade bash
 
-# Python
+# Args and env
+
+ARG USER=pn
+ENV HOME=/home/$USER
+ENV PATH="${PATH}:${HOME}/.local/bin"
+
+# Sudo
+
+RUN apk add --update sudo
+
+USER $USER
+
+RUN mkdir $HOME/app
+
+WORKDIR "${HOME}/app"
+
+# Normal user
+
+## Python
 
 COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
 EXPOSE 8080
-
-WORKDIR /app
