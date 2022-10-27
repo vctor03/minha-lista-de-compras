@@ -1,4 +1,4 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs18-alpine
+FROM nikolaik/python-nodejs:python3.11-nodejs19-alpine
 
 RUN apk add --no-cache --upgrade bash
 
